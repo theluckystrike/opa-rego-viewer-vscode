@@ -1,0 +1,311 @@
+{
+  "name": "zovo-opa-rego-viewer",
+  "displayName": "OPA Rego Policy Inspector",
+  "description": "Inspect *.rego Open Policy Agent, Conftest and Gatekeeper policy files in VS Code: package/import/rule/function explorer, input/data reference table and static fail-open security findings, offline.",
+  "version": "0.1.0",
+  "publisher": "zovo",
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#0F172A",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theluckystrike/opa-rego-viewer-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/theluckystrike/opa-rego-viewer-vscode/issues"
+  },
+  "homepage": "https://github.com/theluckystrike/opa-rego-viewer-vscode#readme",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "keywords": [
+    "opa",
+    "rego",
+    "open-policy-agent",
+    "conftest",
+    "gatekeeper",
+    "policy-as-code",
+    "security",
+    "viewer"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onUri",
+    "onCustomEditor:zovo-opa.viewer"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "zovo-opa.viewer",
+        "displayName": "OPA Rego Policy Inspector",
+        "selector": [
+          {
+            "filenamePattern": "*.rego"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "commands": [
+      {
+        "command": "zovoOpa.openWith",
+        "title": "Open in OPA Rego Policy Inspector",
+        "category": "OPA Rego Policy Inspector",
+        "icon": "$(shield)"
+      },
+      {
+        "command": "zovoOpa.openSample",
+        "title": "Open the Sample Rego Policy",
+        "category": "OPA Rego Policy Inspector"
+      },
+      {
+        "command": "zovoOpa.openWalkthrough",
+        "title": "Get Started",
+        "category": "OPA Rego Policy Inspector"
+      },
+      {
+        "command": "zovoOpa.moreViewers",
+        "title": "More free tools by Zovo",
+        "category": "OPA Rego Policy Inspector"
+      },
+      {
+        "command": "zovoOpa.supportDeveloper",
+        "title": "Support the developer",
+        "category": "OPA Rego Policy Inspector"
+      },
+      {
+        "command": "zovoOpa.auditPolicy",
+        "title": "Audit Rego fail-open and policy rules (Pro, 1 free try)",
+        "category": "OPA Rego Policy Inspector"
+      },
+      {
+        "command": "zovoOpa.diffPolicies",
+        "title": "Compare two Rego policy files (Pro, 1 free try)",
+        "category": "OPA Rego Policy Inspector"
+      },
+      {
+        "command": "zovoOpa.exportRuleDocs",
+        "title": "Export rule and input-path catalog (Pro, 1 free try)",
+        "category": "OPA Rego Policy Inspector"
+      },
+      {
+        "command": "zovoOpa.zovoPro.auditPolicy",
+        "title": "Zovo Pro: Audit Rego fail-open and policy rules"
+      },
+      {
+        "command": "zovoOpa.zovoPro.diffPolicies",
+        "title": "Zovo Pro: Compare two Rego policy files"
+      },
+      {
+        "command": "zovoOpa.zovoPro.exportRuleDocs",
+        "title": "Zovo Pro: Export rule and input-path catalog"
+      },
+      {
+        "command": "zovoOpa.zovoTitle.auditPolicy",
+        "title": "Zovo Pro: Audit Rego fail-open and policy rules"
+      },
+      {
+        "command": "zovoOpa.zovoTitle.diffPolicies",
+        "title": "Zovo Pro: Compare two Rego policy files"
+      },
+      {
+        "command": "zovoOpa.zovoTitle.exportRuleDocs",
+        "title": "Zovo Pro: Export rule and input-path catalog"
+      },
+      {
+        "command": "zovoOpa.getPro",
+        "title": "Get Zovo Pro (USD 19 once, all Zovo extensions)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoOpa.payWithPayPal",
+        "title": "Pay for Zovo Pro with PayPal (USD 19, team of 5 USD 59)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoOpa.unlockWithSponsors",
+        "title": "I already paid: unlock with GitHub Sponsors",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoOpa.enterLicenseKey",
+        "title": "Enter Zovo Pro license key",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoOpa.removeLicense",
+        "title": "Remove Zovo Pro from this editor",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoOpa.payByCard",
+        "title": "Pay for Zovo Pro by card (USD 19)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoOpa.enterKey",
+        "title": "Enter a key",
+        "category": "Zovo Pro"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "zovoOpa.zovoTitle.auditPolicy",
+          "when": "activeCustomEditorId == 'zovo-opa.viewer' && config.zovoOpa.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "zovoOpa.zovoTitle.diffPolicies",
+          "when": "activeCustomEditorId == 'zovo-opa.viewer' && config.zovoOpa.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "zovoOpa.zovoTitle.exportRuleDocs",
+          "when": "activeCustomEditorId == 'zovo-opa.viewer' && config.zovoOpa.showProTools",
+          "group": "zovoPro@3"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "zovoOpa.openWith",
+          "when": "resourceFilename =~ /^.*\\.rego$/i && !explorerResourceIsFolder",
+          "group": "navigation@9"
+        },
+        {
+          "command": "zovoOpa.zovoPro.auditPolicy",
+          "when": "resourceFilename =~ /^.*\\.rego$/i && !explorerResourceIsFolder && config.zovoOpa.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "zovoOpa.zovoPro.diffPolicies",
+          "when": "resourceFilename =~ /^.*\\.rego$/i && !explorerResourceIsFolder && config.zovoOpa.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "zovoOpa.zovoPro.exportRuleDocs",
+          "when": "resourceFilename =~ /^.*\\.rego$/i && !explorerResourceIsFolder && config.zovoOpa.showProTools",
+          "group": "zovoPro@3"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "zovoOpa.auditPolicy",
+          "when": "config.zovoOpa.showProTools"
+        },
+        {
+          "command": "zovoOpa.diffPolicies",
+          "when": "config.zovoOpa.showProTools"
+        },
+        {
+          "command": "zovoOpa.exportRuleDocs",
+          "when": "config.zovoOpa.showProTools"
+        },
+        {
+          "command": "zovoOpa.zovoPro.auditPolicy",
+          "when": "false"
+        },
+        {
+          "command": "zovoOpa.zovoPro.diffPolicies",
+          "when": "false"
+        },
+        {
+          "command": "zovoOpa.zovoPro.exportRuleDocs",
+          "when": "false"
+        },
+        {
+          "command": "zovoOpa.zovoTitle.auditPolicy",
+          "when": "false"
+        },
+        {
+          "command": "zovoOpa.zovoTitle.diffPolicies",
+          "when": "false"
+        },
+        {
+          "command": "zovoOpa.zovoTitle.exportRuleDocs",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "OPA Rego Policy Inspector",
+      "properties": {
+        "zovoOpa.maxFileMB": {
+          "type": "number",
+          "default": 16,
+          "minimum": 1,
+          "maximum": 128,
+          "description": "Files up to this size open in OPA Rego Policy Inspector."
+        },
+        "zovoOpa.pageSize": {
+          "type": "number",
+          "default": 100,
+          "minimum": 20,
+          "maximum": 500,
+          "description": "Rego rules shown on one page."
+        },
+        "zovoOpa.showProTools": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the Zovo Pro tools (policy audit, policy diff and rule catalog export) in the Command Palette, the Explorer menu, the editor title menu and the viewer toolbar. Everything free stays visible."
+        },
+        "zovoOpa.askForRating": {
+          "type": "boolean",
+          "default": true,
+          "description": "Ask once for a store rating after 3 Rego policy files open without an error across 2 days. Choosing No thanks never asks again. Nothing is sent anywhere."
+        },
+        "zovoOpa.showSupportLinks": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the small Rate, More free tools and Zovo Pro links at the bottom of the viewer. Nothing is sent anywhere."
+        },
+        "zovo.opaview.trial.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the 7-day Zovo Pro trial button in the Pro panel."
+        }
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "zovoOpa.start",
+        "title": "Get started with OPA Rego Policy Inspector",
+        "description": "Inspect *.rego Open Policy Agent, Conftest and Gatekeeper policy files in VS Code: package/import/rule/function explorer, input/data reference table and static fail-open findings, offline.",
+        "steps": [
+          {
+            "id": "open",
+            "title": "Open a Rego policy file",
+            "description": "Click any *.rego file in the Explorer, or run Open in OPA Rego Policy Inspector.\n[Open the sample Rego policy](command:zovoOpa.openSample)",
+            "media": {
+              "image": "images/screenshot.png",
+              "altText": "A Rego policy file open in the inspector showing package, imports, rules, input and data references and static policy findings."
+            },
+            "completionEvents": [
+              "onCommand:zovoOpa.openSample"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "test": "node scripts/test.js",
+    "package": "npx -y @vscode/vsce@3 package --no-dependencies"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/theluckystrike/sponsorships?tier_id=679878"
+  }
+}
